@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShortMaker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ========== SOL: FORM ========== -->
+      <div class="panel panel-form" id="panelForm">
+        <header>
+          <div class="logo">
+            Short
+            <span>Maker</span>
+          </div>
+          <div class="tagline">16:9 → 9:16 · local · ffmpeg</div>
+        </header>
+
+        <!-- Drop Zone -->
+        <div class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="video/*" />
+          <span class="drop-icon">🎬</span>
+          <div class="drop-label">Videoyu buraya sürükle veya tıkla</div>
+          <div class="drop-sub">mp4, mov, mkv — maksimum boyut yok</div>
+          <div class="file-selected" id="fileName"></div>
+        </div>
+
+        <!-- Aralık satırları -->
+        <div class="ranges-header">
+          <span class="ranges-label">ARALIKLAR</span>
+          <button class="add-btn" id="addRangeBtn">+ Ekle</button>
+        </div>
+        <div class="ranges-list" id="rangesList">
+          <!-- satırlar JS ile eklenir -->
+        </div>
+
+        <button class="btn" id="processBtn" disabled>Short Oluştur</button>
+      </div>
+
+      <!-- Toggle butonu -->
+      <button class="preview-toggle" id="previewToggle" title="Önizlemeyi gizle/göster">‹</button>
+
+      <!-- ========== SAĞ: ÖNİZLEME ========== -->
+      <div class="panel panel-preview" id="panelPreview">
+        <!-- Progress (işlem sırasında) -->
+        <div class="preview-progress" id="previewProgress">
+          <div class="progress-title" id="progressTitle">Hazırlanıyor...</div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-steps" id="progressSteps"></div>
+        </div>
+
+        <!-- Video player (işlem sonrası) -->
+        <div class="preview-player" id="previewPlayer" style="display: none">
+          <div class="player-wrap">
+            <video id="mainVideo" controls playsinline></video>
+            <a class="download-btn" id="downloadBtn" href="#" download>↓ İndir</a>
+          </div>
+          <div class="thumb-list" id="thumbList"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
